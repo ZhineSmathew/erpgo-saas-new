@@ -253,7 +253,26 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('admin');
+    }
+    // dump login page
+    public function showAdminLoginForm($lang = '')
+    {
+
+        if($lang == '')
+        {
+            $lang = Utility::getValByName('default_language');
+        }
+
+        $langList = Utility::languages()->toArray();
+        $lang = array_key_exists($lang, $langList) ? $lang : 'en';
+
+        \App::setLocale($lang);
+        // dd($lang);
+
+        $settings = Utility::settings();
+
+        return view('auth.adminlogin', compact('lang','settings'));
     }
 
     public function showLoginForm($lang = '')
