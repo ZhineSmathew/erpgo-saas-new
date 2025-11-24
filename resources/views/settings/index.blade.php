@@ -356,7 +356,7 @@
                     <div class="card sticky-top setting-sidebar" style="top:30px">
                         <div class="list-group list-group-flush" id="useradd-sidenav">
                             <a href="#brand-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('Brand Settings') }}
+                                class="list-group-item list-group-item-action border-0">{{ __('Default Settings') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#email-settings"
@@ -364,23 +364,23 @@
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#payment-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('Payment Settings') }}
+                                class="list-group-item list-group-item-action border-0 hidden-menu">{{ __('Payment Settings') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#pusher-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('Pusher Settings') }}
+                                class="list-group-item list-group-item-action border-0 hidden-menu">{{ __('Pusher Settings') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#recaptcha_settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('ReCaptcha Settings') }}
+                                class="list-group-item list-group-item-action border-0 hidden-menu">{{ __('ReCaptcha Settings') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#storage-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('Storage Settings') }}
+                                class="list-group-item list-group-item-action border-0 hidden-menu">{{ __('Storage Settings') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#seo-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('SEO Settings') }}
+                                class="list-group-item list-group-item-action border-0 hidden-menu">{{ __('SEO Settings') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#cookie-settings"
@@ -388,11 +388,11 @@
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#cache-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('Cache Settings') }}
+                                class="list-group-item list-group-item-action border-0 hidden-menu">{{ __('Cache Settings') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#chat-gpt-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('Chat GPT Settings') }}
+                                class="list-group-item list-group-item-action border-0 hidden-menu">{{ __('Chat GPT Settings') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
 
@@ -406,7 +406,7 @@
                     <!--Site Settings-->
                     <div id="brand-settings" class="card">
                         <div class="card-header p-3">
-                            <h5>{{ __('Brand Settings') }}</h5>
+                            <h5>{{ __('Default Settings') }}</h5>
                         </div>
                         {{ Form::model($settings, ['url' => 'systems', 'method' => 'POST', 'enctype' => 'multipart/form-data']) }}
                         <div class="card-body p-3">
@@ -883,7 +883,7 @@
                     </div>
 
                     <!--Payment Settings-->
-                    <div class="card" id="payment-settings">
+                    <div class="card hidden-menu" id="payment-settings">
                         <div class="card-header p-3">
                             <h5 class="mb-1">{{ 'Payment Settings' }}</h5>
                             <small class="text-secondary font-weight-bold">
@@ -3550,7 +3550,7 @@
                     </div>
 
                     <!--Pusher Settings-->
-                    <div id="pusher-settings" class="card">
+                    <div id="pusher-settings" class="card hidden-menu">
                         <div class="card-header p-3">
                             <h5>{{ __('Pusher Settings') }}</h5>
                         </div>
@@ -3614,7 +3614,7 @@
                     </div>
 
                     <!--ReCaptcha Settings-->
-                    <div id="recaptcha_settings" class="card">
+                    <div id="recaptcha_settings" class="card hidden-menu">
                         <form method="POST" action="{{ route('recaptcha.settings.store') }}"
                             accept-charset="UTF-8" class="mb-0">
                             @csrf
@@ -3687,7 +3687,7 @@
                     </div>
 
                     <!-- Storage Settings -->
-                    <div id="storage-settings" class="card mb-3">
+                    <div id="storage-settings" class="card mb-3 hidden-menu">
                         {{ Form::open(['route' => 'storage.setting.store', 'class' => 'mb-0','enctype' => 'multipart/form-data']) }}
                         <div class="card-header p-3">
                             <div class="row">
@@ -3906,7 +3906,7 @@
                     </div>
 
                     {{-- SEO settings --}}
-                    <div id="seo-settings" class="card">
+                    <div id="seo-settings" class="card hidden-menu">
                         <div class="card-header p-3 d-flex justify-content-between align-items-center">
                             <h5>{{ __('SEO Settings') }}</h5>
                             @php
@@ -4098,7 +4098,7 @@
                     </div>
 
                     {{-- Cache settings --}}
-                    <div class="card" id="cache-settings">
+                    <div class="card hidden-menu" id="cache-settings">
                         <div class="card-header p-3">
                             <h5>{{ 'Cache Settings' }}</h5>
                             <small class="text-secondary font-weight-bold">
@@ -4130,7 +4130,7 @@
                     </div>
 
                     {{-- chat gpt settings --}}
-                    <div id="chat-gpt-settings" class="card">
+                    <div id="chat-gpt-settings" class="card hidden-menu">
                         <div class="card-header p-3">
                             <h5>{{ __('Chat GPT Settings') }}</h5>
                         </div>

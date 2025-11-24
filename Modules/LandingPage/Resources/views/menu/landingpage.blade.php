@@ -1,4 +1,4 @@
-<li class="dash-item dash-hasmenu
+<li class="dash-item dash-hasmenu hidden-menu
             {{ (Request::route()->getName() == 'landingpage.index') || (Request::route()->getName() == 'custom_page.index')
             || (Request::route()->getName() == 'homesection.index') || (Request::route()->getName() == 'features.index')
             || (Request::route()->getName() == 'discover.index') || (Request::route()->getName() == 'screenshots.index')
