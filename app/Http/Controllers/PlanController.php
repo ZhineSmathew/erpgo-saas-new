@@ -158,38 +158,213 @@ class PlanController extends Controller
     }
 
 
+    // public function update(Request $request, $plan_id)
+    // {
+
+    //     if(\Auth::user()->can('edit plan'))
+    //     {
+
+    //         $admin_payment_setting = Utility::getAdminPaymentSetting();
+    //         // dd(!empty($admin_payment_setting));
+    //         if(!empty($admin_payment_setting) && ($admin_payment_setting['is_manually_payment_enabled'] == 'on'
+    //                 || $admin_payment_setting['is_bank_transfer_enabled'] == 'on' || $admin_payment_setting['is_stripe_enabled'] == 'on'
+    //                 || $admin_payment_setting['is_paypal_enabled'] == 'on' || $admin_payment_setting['is_paystack_enabled'] == 'on'
+    //                 || $admin_payment_setting['is_flutterwave_enabled'] == 'on' || $admin_payment_setting['is_razorpay_enabled'] == 'on'
+    //                 || $admin_payment_setting['is_mercado_enabled'] == 'on' || $admin_payment_setting['is_paytm_enabled'] == 'on'
+    //                 || $admin_payment_setting['is_mollie_enabled'] == 'on' || $admin_payment_setting['is_skrill_enabled'] == 'on'
+    //                 || $admin_payment_setting['is_coingate_enabled'] == 'on'|| $admin_payment_setting['is_paymentwall_enabled'] == 'on'
+    //                 || $admin_payment_setting['is_toyyibpay_enabled'] == 'on' || $admin_payment_setting['is_payfast_enabled'] == 'on'
+    //                 || $admin_payment_setting['is_iyzipay_enabled'] == 'on' || $admin_payment_setting['is_sspay_enabled'] == 'on'
+    //                 || $admin_payment_setting['is_paytab_enabled'] == 'on'  || $admin_payment_setting['is_benefit_enabled'] == 'on'
+    //                 || $admin_payment_setting['is_cashfree_enabled'] == 'on'  || $admin_payment_setting['is_aamarpay_enabled'] == 'on'
+    //                 || $admin_payment_setting['is_paytr_enabled'] == 'on' || $admin_payment_setting['is_yookassa_enabled'] =='on'
+    //                 || $admin_payment_setting['is_midtrans_enabled'] == 'on' || $admin_payment_setting['is_xendit_enabled'] == 'on'
+    //                 || $admin_payment_setting['is_nepalste_enabled'] == 'on'))
+    //         {
+    //             dd('asd');
+    //             $plan = Plan::find($plan_id);
+                
+    //             if(!empty($plan))
+    //             {
+    //                 $validator = \Validator::make(
+    //                     $request->all(),
+    //                     [
+    //                         'name'          => 'required|unique:plans,name,' . $plan_id,
+    //                        'duration'      => function ($attribute, $value, $fail) use ($plan_id) {
+    //                             if ($plan_id != 1 && empty($value)) {
+    //                                 $fail($attribute.' is required.');
+    //                             }
+    //                         },
+    //                         'max_users'     => 'required|numeric',
+    //                         'max_customers' => 'required|numeric',
+    //                         'max_venders'   => 'required|numeric',
+    //                         'storage_limit' => 'required|numeric',
+    //                     ]
+    //                 );
+
+
+    //                 if ($validator->fails()) {
+    //                     $messages = $validator->getMessageBag();
+    //                     return redirect()->back()->with('error', $messages->first());
+    //                 }
+
+    //                 $post = $request->all();
+
+    //                 if(array_key_exists('enable_project', $post))
+    //                 {
+    //                     $post['project'] = 1;
+    //                 }
+    //                 else
+    //                 {
+    //                     $post['project'] = 0;
+    //                 }
+    //                 if(array_key_exists('enable_crm', $post))
+    //                 {
+    //                     $post['crm'] = 1;
+    //                 }
+    //                 else
+    //                 {
+    //                     $post['crm'] = 0;
+    //                 }
+    //                 if(array_key_exists('enable_hrm', $post))
+    //                 {
+    //                     $post['hrm'] = 1;
+    //                 }
+    //                 else
+    //                 {
+    //                     $post['hrm'] = 0;
+    //                 }
+    //                 if(array_key_exists('enable_account', $post))
+    //                 {
+    //                     $post['account'] = 1;
+    //                 }
+    //                 else
+    //                 {
+    //                     $post['account'] = 0;
+    //                 }
+
+    //                 if(array_key_exists('enable_pos', $post))
+    //                 {
+    //                     $post['pos'] = 1;
+    //                 }
+    //                 else
+    //                 {
+    //                     $post['pos'] = 0;
+    //                 }
+    //                 if(array_key_exists('enable_chatgpt', $post))
+    //                 {
+    //                     $post['chatgpt'] = 1;
+    //                 }
+    //                 else
+    //                 {
+    //                     $post['chatgpt'] = 0;
+    //                 }
+    //                 if(isset($request->trial))
+    //                 {
+    //                     $post['trial'] = 1;
+    //                     $post['trial_days'] = $request->trial_days;
+    //                 }
+    //                 else
+    //                 {
+    //                     $post['trial'] = 0;
+    //                     $post['trial_days'] = null;
+    //                 }
+    //                 if($request->hasFile('image'))
+    //                 {
+    //                     $filenameWithExt = $request->file('image')->getClientOriginalName();
+    //                     $filename        = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+    //                     $extension       = $request->file('image')->getClientOriginalExtension();
+    //                     $fileNameToStore = 'plan_' . time() . '.' . $extension;
+
+    //                     $dir = storage_path('uploads/plan/');
+    //                     if(!file_exists($dir))
+    //                     {
+    //                         mkdir($dir, 0777, true);
+    //                     }
+    //                     $image_path = $dir . '/' . $plan->image;  // Value is not URL but directory file path
+    //                     if(File::exists($image_path))
+    //                     {
+
+    //                         chmod($image_path, 0755);
+    //                         File::delete($image_path);
+    //                     }
+    //                     $path = $request->file('image')->storeAs('uploads/plan/', $fileNameToStore);
+
+    //                     $post['image'] = $fileNameToStore;
+    //                 }
+
+    //                 if($plan->update($post))
+    //                 {
+    //                     return redirect()->back()->with('success', __('Plan successfully updated.'));
+    //                 }
+    //                 else
+    //                 {
+    //                     return redirect()->back()->with('error', __('Something is wrong.'));
+    //                 }
+    //             }
+    //             else
+    //             {
+    //                 return redirect()->back()->with('error', __('Plan not found.'));
+    //             }
+
+
+    //         }
+    //         else
+    //         {
+    //             return redirect()->back()->with('error', __('Please set stripe api key & secret key for add new plan.'));
+    //         }
+    //     }
+    //     else
+    //     {
+    //         return redirect()->back()->with('error', __('Permission denied.'));
+    //     }
+
+    // }
+
+    // code Check without the payment, Now this code if payment is empty will update the plan Datas
     public function update(Request $request, $plan_id)
     {
-
-
         if(\Auth::user()->can('edit plan'))
         {
-
             $admin_payment_setting = Utility::getAdminPaymentSetting();
+            
+            // Check if at least one payment method is enabled OR if array is empty (allow update anyway)
+            $hasEnabledPayment = empty($admin_payment_setting); // If empty, allow update
+            
+            if (!empty($admin_payment_setting)) {
+                $paymentMethods = [
+                    'is_manually_payment_enabled', 'is_bank_transfer_enabled', 'is_stripe_enabled',
+                    'is_paypal_enabled', 'is_paystack_enabled', 'is_flutterwave_enabled',
+                    'is_razorpay_enabled', 'is_mercado_enabled', 'is_paytm_enabled',
+                    'is_mollie_enabled', 'is_skrill_enabled', 'is_coingate_enabled',
+                    'is_paymentwall_enabled', 'is_toyyibpay_enabled', 'is_payfast_enabled',
+                    'is_iyzipay_enabled', 'is_sspay_enabled', 'is_paytab_enabled',
+                    'is_benefit_enabled', 'is_cashfree_enabled', 'is_aamarpay_enabled',
+                    'is_paytr_enabled', 'is_yookassa_enabled', 'is_midtrans_enabled',
+                    'is_xendit_enabled', 'is_nepalste_enabled'
+                ];
 
-            if(!empty($admin_payment_setting) && ($admin_payment_setting['is_manually_payment_enabled'] == 'on'
-                    || $admin_payment_setting['is_bank_transfer_enabled'] == 'on' || $admin_payment_setting['is_stripe_enabled'] == 'on'
-                    || $admin_payment_setting['is_paypal_enabled'] == 'on' || $admin_payment_setting['is_paystack_enabled'] == 'on'
-                    || $admin_payment_setting['is_flutterwave_enabled'] == 'on' || $admin_payment_setting['is_razorpay_enabled'] == 'on'
-                    || $admin_payment_setting['is_mercado_enabled'] == 'on' || $admin_payment_setting['is_paytm_enabled'] == 'on'
-                    || $admin_payment_setting['is_mollie_enabled'] == 'on' || $admin_payment_setting['is_skrill_enabled'] == 'on'
-                    || $admin_payment_setting['is_coingate_enabled'] == 'on'|| $admin_payment_setting['is_paymentwall_enabled'] == 'on'
-                    || $admin_payment_setting['is_toyyibpay_enabled'] == 'on' || $admin_payment_setting['is_payfast_enabled'] == 'on'
-                    || $admin_payment_setting['is_iyzipay_enabled'] == 'on' || $admin_payment_setting['is_sspay_enabled'] == 'on'
-                    || $admin_payment_setting['is_paytab_enabled'] == 'on'  || $admin_payment_setting['is_benefit_enabled'] == 'on'
-                    || $admin_payment_setting['is_cashfree_enabled'] == 'on'  || $admin_payment_setting['is_aamarpay_enabled'] == 'on'
-                    || $admin_payment_setting['is_paytr_enabled'] == 'on' || $admin_payment_setting['is_yookassa_enabled'] ='on'
-                    || $admin_payment_setting['is_midtrans_enabled'] == 'on' || $admin_payment_setting['is_xendit_enabled'] == 'on'
-                    || $admin_payment_setting['is_nepalste_enabled'] == 'on'))
+                foreach ($paymentMethods as $method) {
+                    if (isset($admin_payment_setting[$method]) && $admin_payment_setting[$method] == 'on') {
+                        $hasEnabledPayment = true;
+                        break;
+                    }
+                }
+            }
+
+            if($hasEnabledPayment)
             {
+                // REMOVED: dd('asd'); <- This was blocking execution
+                
                 $plan = Plan::find($plan_id);
+                
                 if(!empty($plan))
                 {
                     $validator = \Validator::make(
                         $request->all(),
                         [
                             'name'          => 'required|unique:plans,name,' . $plan_id,
-                           'duration'      => function ($attribute, $value, $fail) use ($plan_id) {
+                        'duration'      => function ($attribute, $value, $fail) use ($plan_id) {
                                 if ($plan_id != 1 && empty($value)) {
                                     $fail($attribute.' is required.');
                                 }
@@ -200,7 +375,6 @@ class PlanController extends Controller
                             'storage_limit' => 'required|numeric',
                         ]
                     );
-
 
                     if ($validator->fails()) {
                         $messages = $validator->getMessageBag();
@@ -280,10 +454,9 @@ class PlanController extends Controller
                         {
                             mkdir($dir, 0777, true);
                         }
-                        $image_path = $dir . '/' . $plan->image;  // Value is not URL but directory file path
+                        $image_path = $dir . '/' . $plan->image;
                         if(File::exists($image_path))
                         {
-
                             chmod($image_path, 0755);
                             File::delete($image_path);
                         }
@@ -305,8 +478,6 @@ class PlanController extends Controller
                 {
                     return redirect()->back()->with('error', __('Plan not found.'));
                 }
-
-
             }
             else
             {
@@ -317,7 +488,6 @@ class PlanController extends Controller
         {
             return redirect()->back()->with('error', __('Permission denied.'));
         }
-
     }
 
     public function destroy(Request $request, $id)

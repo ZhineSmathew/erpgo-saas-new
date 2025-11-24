@@ -253,7 +253,7 @@
     </div>
 </div>
 
-    <div class="row" style="display: none>
+    <div class="row" style="display: none">
         <div class="col-xxl-12">
             <div class="card">
                 <div class="card-header">
