@@ -70,7 +70,7 @@ class DashboardController extends Controller
             return view('landingpage::layouts.landingpage' , compact('adminSettings'));
 
         } else {
-            return redirect('login');
+            return redirect('admin');
         }
     }
 
