@@ -84,7 +84,7 @@
                     </li>
                 @endif
 
-                <li class="dropdown dash-h-item drp-language">
+                <li class="dropdown dash-h-item drp-language" style="display: none">
                     <a
                         class="dash-head-link dropdown-toggle arrow-none me-0"
                         data-bs-toggle="dropdown"
