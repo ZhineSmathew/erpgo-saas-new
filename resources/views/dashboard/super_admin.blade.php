@@ -153,7 +153,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xxl-4 col-md-6 col-12 dash-info-card super-admin">
+    <div class="col-xxl-4 col-md-6 col-12 dash-info-card super-admin" style="display: none">
         <div class="info-card-inner card mb-0">
             <svg class="star-bg" width="83" height="79" viewBox="0 0 83 79" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
@@ -253,7 +253,7 @@
     </div>
 </div>
 
-    <div class="row">
+    <div class="row" style="display: none>
         <div class="col-xxl-12">
             <div class="card">
                 <div class="card-header">
