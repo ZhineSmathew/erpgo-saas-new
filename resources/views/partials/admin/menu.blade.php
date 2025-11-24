@@ -1540,6 +1540,7 @@
                 </li>
             </ul>
         @endif
+        {{-- Super Admin Dashboard Start here --}}
         @if (\Auth::user()->type == 'super admin')
             <ul class="dash-navbar">
                 @if (Gate::check('manage super admin dashboard'))
@@ -1570,8 +1571,9 @@
                         </a>
                     </li>
                 @endif
+                {{-- Plan Request Start here  --}}
                 @if (\Auth::user()->type == 'super admin')
-                    <li class="dash-item dash-hasmenu {{ request()->is('plan_request*') ? 'active' : '' }}">
+                    <li class="dash-item dash-hasmenu hidden-menu {{ request()->is('plan_request*') ? 'active' : '' }}">
                         <a href="{{ route('plan_request.index') }}" class="dash-link">
                             <span class="dash-micon"><i class="ti ti-arrow-up-right-circle"></i></span><span
                                 class="dash-mtext">{{ __('Plan Request') }}</span>
@@ -1579,7 +1581,7 @@
                     </li>
                 @endif
 
-                <li class="dash-item dash-hasmenu  {{ Request::segment(1) == '' ? 'active' : '' }}">
+                <li class="dash-item dash-hasmenu hidden-menu {{ Request::segment(1) == '' ? 'active' : '' }}">
                     <a href="{{ route('referral-program.index') }}" class="dash-link">
                         <span class="dash-micon"><i class="ti ti-discount-2"></i></span><span
                             class="dash-mtext">{{ __('Referral Program') }}</span>
@@ -1588,7 +1590,7 @@
 
 
                 @if (Gate::check('manage coupon'))
-                    <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'coupons' ? 'active' : '' }}">
+                    <li class="dash-item dash-hasmenu hidden-menu {{ Request::segment(1) == 'coupons' ? 'active' : '' }}">
                         <a href="{{ route('coupons.index') }}" class="dash-link">
                             <span class="dash-micon"><i class="ti ti-gift"></i></span><span
                                 class="dash-mtext">{{ __('Coupon') }}</span>
@@ -1596,7 +1598,7 @@
                     </li>
                 @endif
                 @if (Gate::check('manage order'))
-                    <li class="dash-item dash-hasmenu  {{ Request::segment(1) == 'orders' ? 'active' : '' }}">
+                    <li class="dash-item dash-hasmenu hidden-menu {{ Request::segment(1) == 'orders' ? 'active' : '' }}">
                         <a href="{{ route('order.index') }}" class="dash-link">
                             <span class="dash-micon"><i class="ti ti-shopping-cart-plus"></i></span><span
                                 class="dash-mtext">{{ __('Order') }}</span>
@@ -1604,7 +1606,7 @@
                     </li>
                 @endif
                 <li
-                    class="dash-item dash-hasmenu {{ Request::segment(1) == 'email_template' || Request::route()->getName() == 'manage.email.language' ? ' active dash-trigger' : 'collapsed' }}">
+                    class="dash-item dash-hasmenu hidden-menu {{ Request::segment(1) == 'email_template' || Request::route()->getName() == 'manage.email.language' ? ' active dash-trigger' : 'collapsed' }}">
                     <a href="{{ route('email_template.index') }}" class="dash-link">
                         <span class="dash-micon"><i class="ti ti-template"></i></span>
                         <span class="dash-mtext">{{ __('Email Template') }}</span>
