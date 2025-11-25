@@ -272,7 +272,7 @@ class UserController extends Controller
                 $user->roles()->sync($roles);
 
                 return redirect()->route('users.index')->with(
-                    'success', 'company successfully updated.'
+                    'success', 'Company Successfully Updated.'
                 );
             } else {
                 $user = User::findOrFail($id);
