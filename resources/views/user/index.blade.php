@@ -184,21 +184,21 @@
                             <div class="user-icon d-flex align-items-center justify-content-center">
                                 <i class="f-16 ti ti-users text-white"></i>
                             </div>
-                            {{ $user->totalCompanyUser($user->id) }}
+                            {{ $user->currentPlan->max_users }}
                         </div>
                         <div class="user-count d-flex align-items-center gap-2" data-bs-toggle="tooltip"
                             title="{{ __('Customers') }}">
                             <div class="user-icon d-flex align-items-center justify-content-center">
                                 <i class="f-16 ti ti-users text-white"></i>
                             </div>
-                            {{ $user->totalCompanyCustomer($user->id) }}
+                            {{ $user->currentPlan->max_customers }}
                         </div>
                         <div class="user-count d-flex align-items-center gap-2" data-bs-toggle="tooltip"
                             title="{{ __('Vendors') }}">
                             <div class="user-icon d-flex align-items-center justify-content-center">
                                 <i class="f-16 ti ti-users text-white"></i>
                             </div>
-                            {{ $user->totalCompanyVender($user->id) }}
+                            {{ $user->currentPlan->max_venders }}
                         </div>
                     </div>
                 @endif
